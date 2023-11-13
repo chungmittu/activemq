@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  activemq:
+    image: apache/activemq-classic:5.17.5
+    container_name: activemq
+    ports:
+      - 61616:61616
+      - 8161:8161
+    volumes:
+      - activemq_data:/var/lib/activemq/data
+      - activemq_logs:/var/lib/activemq/log
+      - ./jetty.xml:/opt/apache-activemq/conf/jetty.xml
+      - ./env:/opt/apache-activemq/bin/env
+
+volumes:
+  activemq_data:
+  activemq_logs:
